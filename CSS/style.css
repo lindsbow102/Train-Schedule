@@ -1,5 +1,5 @@
 body {
-    background-color: #3333ff;
+    background-color: #2d2d72;
 }
 
 header {
@@ -8,5 +8,7 @@ header {
 }
 
 .jumbotron {
-    background-color: #b3b3b3;
+    background-color: #555;
+    border: 1px solid white;
+    color: white;
 }
