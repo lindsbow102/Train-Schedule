@@ -17,14 +17,27 @@ $("#add-train").on("click", function(event) {
   event.preventDefault();
 
   //Grab values from text boxes
-  var name = $("#name-input").val().trim();
-  var destination = $("#destination-input").val().trim();
-  var firstTrain = moment($("#first-train-input").val().trim(), "HH:mm").subtract(10, "years").format("X");
-  var frequency = $("#frequency-input").val().trim();
+  var name = $("#name-input")
+    .val()
+    .trim();
+  var destination = $("#destination-input")
+    .val()
+    .trim();
+  var firstTrain = moment(
+    $("#first-train-input")
+      .val()
+      .trim(),
+    "HH:mm"
+  )
+    .subtract(10, "years")
+    .format("X");
+  var frequency = $("#frequency-input")
+    .val()
+    .trim();
 
   console.log(firstTrain);
 
-// Create train object to push to Firebase
+  // Create train object to push to Firebase
   var newTrain = {
     name: name,
     destination: destination,
@@ -52,6 +65,7 @@ $("#add-train").on("click", function(event) {
 });
 // Create Firebase event for adding moment.js info to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(snapshot) {
+  console.log(snapshot.key);
   // Store everything into a variable.
   var tName = snapshot.val().name;
   var tDestination = snapshot.val().destination;
@@ -59,13 +73,51 @@ database.ref().on("child_added", function(snapshot) {
   var tFrequency = snapshot.val().frequency;
 
   //Using moment.js to log times
-  var remainder = moment().diff(moment.unix(tFirstTrain), "minutes") % tFrequency;
+  var remainder =
+    moment().diff(moment.unix(tFirstTrain), "minutes") % tFrequency;
   var minutes = tFrequency - remainder;
-  var arrival = moment().add(minutes, "m").format("hh:mm A");
+  var arrival = moment()
+    .add(minutes, "m")
+    .format("hh:mm A");
 
   console.log(remainder);
   console.log(minutes);
   console.log(arrival);
 
-  $("#trainTable > tBody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" + tFrequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
+  var id = snapshot.key;
+  console.log("ID: " + id);
+
+  $("#trainTable > tBody").append(
+    `<tr data-id='${id}'>
+  <td>${tName}</td>
+  <td>${tDestination}</td>
+  <td>${tFrequency}</td>
+  <td>${arrival}</td>
+  <td>${minutes}</td>
+  <td><button id='remove'>Remove</button></td>
+  </tr>`
+  );
+});
+
+// Bonus:  Add functionality to remove train from Firebase and table
+$(document).on("click", "#remove", function() {
+  var trainId = $(this)
+    .parent()
+    .parent()
+    .attr("data-id");
+
+  console.log(trainId);
+
+  database
+    .ref()
+    .child(`${trainId}`)
+    .remove()
+    .then(function() {
+      alert("Train removed!");
+    })
+    .catch(function(error) {
+      console.log("Remove failed: " + error.message);
+    });
+
+  location.reload();
 });
