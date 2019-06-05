@@ -53,19 +53,19 @@ $("#add-train").on("click", function(event) {
 // Create Firebase event for adding moment.js info to the database and a row in the html when a user adds an entry
 database.ref().on("child_added", function(snapshot) {
   // Store everything into a variable.
-  var name = snapshot.val().name;
-  var destination = snapshot.val().destination;
-  var firstTrain = snapshot.val().firstTrain;
-  var frequency = snapshot.val().frequency;
+  var tName = snapshot.val().name;
+  var tDestination = snapshot.val().destination;
+  var tFirstTrain = snapshot.val().firstTrain;
+  var tFrequency = snapshot.val().frequency;
 
   //Using moment.js to log times
-  var remainder = moment().diff(moment.unix(firstTrain), "minutes")%frequency;
-  var minutes = frequency - remainder;
+  var remainder = moment().diff(moment.unix(tFirstTrain), "minutes") % tFrequency;
+  var minutes = tFrequency - remainder;
   var arrival = moment().add(minutes, "m").format("hh:mm A");
 
   console.log(remainder);
   console.log(minutes);
   console.log(arrival);
 
-  $("#trainTable > tBody").append("<tr><td>" + name + "</td><td>" + destination + "</td><td>" + frequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
+  $("#trainTable > tBody").append("<tr><td>" + tName + "</td><td>" + tDestination + "</td><td>" + tFrequency + "</td><td>" + arrival + "</td><td>" + minutes + "</td></tr>");
 });
