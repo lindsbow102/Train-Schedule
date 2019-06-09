@@ -1,5 +1,5 @@
 body {
-    background-color: #2d2d72;
+    background-image: linear-gradient(to right, blue, #2d2d72);
 }
 
 header {
@@ -11,4 +11,8 @@ header {
     background-color: #555;
     border: 1px solid white;
     color: white;
+}
+
+#train-form {
+    margin-top: 3rem;
 }

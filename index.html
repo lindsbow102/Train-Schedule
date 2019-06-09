@@ -8,8 +8,8 @@
     <!--BOOTSTRAP CSS-->
     <link
       rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
     <!--PERSONAL CSS-->
@@ -18,7 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--MOMENT JS-->
     <script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
-    
+
     <!--FIREBASE-->
     <script src="https://www.gstatic.com/firebasejs/4.12.1/firebase.js"></script>
   </head>
@@ -33,29 +33,36 @@
       </div>
     </header>
     <div class="container" id="train-schedule">
-      <div class="panel panel-default">
+      <div class="card">
         <!-- Default panel contents -->
-        <div class="panel-heading"><h3>Current Train Schedule</h3></div>
-
-        <!-- Table -->
-        <table class="table table-hover" id="trainTable">
-          <thead>
-            <tr>
-              <th>Train Name</th>
-              <th>Destination</th>
-              <th>Frequency (min)</th>
-              <th>Next Arrival</th>
-              <th>Minutes Away</th>
-            </tr>
-          </thead>
-          <tbody></tbody>
-        </table>
+        <div class="card-heading text-center">
+          <h3 class="mt-3">Current Train Schedule</h3>
+        </div>
+        <div class="card-body">
+          <!-- Table -->
+          <table class="table table-hover" id="trainTable">
+            <thead>
+              <tr>
+                <th>Train Name</th>
+                <th>Destination</th>
+                <th>Frequency (min)</th>
+                <th>Next Arrival</th>
+                <th>Minutes Away</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
-    <div class="container">
-      <div class="panel panel-default">
-        <div class="panel-heading"><h3 class="panel-title">Add Train</h3></div>
-        <div class="panel-body">
+
+    <div class="container" id="train-form">
+      <div class="card mt-7">
+        <div class="card-heading text-center">
+          <h3 class="mt-3">Add Train</h3>
+        </div>
+        <div class="card-body">
           <!-- Sign-up Form (note the various input "types") -->
           <form role="form">
             <div class="form-group">
@@ -70,11 +77,7 @@
               <label for="first-train-input"
                 >First Train Time (HH:mm--military time):</label
               >
-              <input
-                class="form-control"
-                id="first-train-input"
-                type="text"
-              />
+              <input class="form-control" id="first-train-input" type="text" />
             </div>
             <div class="form-group">
               <label for="frequency-input">Frequency (min):</label>
