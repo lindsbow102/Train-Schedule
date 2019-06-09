@@ -1,5 +1,6 @@
 body {
     background-image: linear-gradient(to right, blue, #2d2d72);
+    background-position: cover;
 }
 
 header {
