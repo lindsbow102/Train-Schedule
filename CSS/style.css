@@ -1,6 +1,11 @@
 body {
     background-image: linear-gradient(to right, blue, #2d2d72);
-    background-position: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0;
+    position: relative;
+    width: 100%;
 }
 
 header {
@@ -14,6 +19,105 @@ header {
     color: white;
 }
 
-#train-form {
-    margin-top: 3rem;
+h3 {
+    text-align: center;
 }
+
+.train-schedule {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    width: 90%;
+}
+
+table {
+    margin: 0 auto;
+}
+
+tr:hover {
+    background-color: rgb(206, 203, 203);
+}
+
+th, td {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: .5rem;
+    text-align: center;
+}
+
+td {
+    color: rgb(49, 49, 49);
+}
+
+#train-form {
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 3rem auto;
+    padding: 1.5rem;
+    width: 90%;
+}
+
+#remove {
+    border-radius: 5px;
+    box-shadow: .2rem .2rem .2rem gray;
+}
+
+#remove:hover {
+    background-color: blue;
+    color: white;
+}
+
+@media only screen and (max-width: 1138px) {
+    .train-schedule, #train-form {
+        width: 90%;
+        margin: 2rem auto;
+    }
+
+    th, td {
+        padding: .3rem;
+    }
+  }
+
+@media only screen and (max-width: 600px) {
+    .jumbotron > h1 {
+        font-size: 1.7rem;
+    }
+    .train-schedule, #train-form {
+        width: 85%;
+        margin: 2rem auto;
+    } 
+
+    table {
+        font-size: 7px;
+        width: 70%;
+        margin: 0 auto;
+    } 
+
+     th, td {
+        padding: .3rem;
+    }
+  }
+
+  @media only screen and (max-width: 320px) {
+    .train-schedule, #train-form {
+        width: 300px;
+        margin: 1.5rem auto;
+    } 
+
+    table {
+        font-size: 7px;
+        width: 250px;
+        margin: 0 auto;
+    } 
+
+    tr {
+        width: 250px;
+    }
+
+     th, td {
+        padding: .2rem;
+    }
+  }

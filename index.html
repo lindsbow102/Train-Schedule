@@ -13,7 +13,7 @@
       crossorigin="anonymous"
     />
     <!--PERSONAL CSS-->
-    <link rel="stylesheet" type="text/css" href="CSS/style.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
     <!--JQUERY-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <!--MOMENT JS-->
@@ -25,69 +25,59 @@
 
   <body>
     <header>
-      <div class="container-fluid">
-        <div class="jumbotron">
-          <h1>All Aboard the Choo Choo Train!</h1>
-          <p>"Life is the train, and not the station."</p>
-        </div>
+      <div class="jumbotron">
+        <h1>All Aboard the Choo Choo Train!</h1>
+        <p>"Life is the train, and not the station."</p>
       </div>
     </header>
-    <div class="container" id="train-schedule">
-      <div class="card">
-        <!-- Default panel contents -->
-        <div class="card-heading text-center">
-          <h3 class="mt-3">Current Train Schedule</h3>
-        </div>
-        <div class="card-body">
-          <!-- Table -->
-          <table class="table table-hover" id="trainTable">
-            <thead>
-              <tr>
-                <th>Train Name</th>
-                <th>Destination</th>
-                <th>Frequency (min)</th>
-                <th>Next Arrival</th>
-                <th>Minutes Away</th>
-                <th>Delete</th>
-              </tr>
-            </thead>
-            <tbody></tbody>
-          </table>
-        </div>
-      </div>
+    
+    <!--Train Schedule Table-->
+    <div class="train-schedule">
+      <h3>Current Train Schedule</h3>
+
+      <table id="trainTable">
+        <thead>
+          <tr>
+            <th>Train Name</th>
+            <th>Destination</th>
+            <th>Frequency (min)</th>
+            <th>Next Arrival</th>
+            <th>Minutes Away</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
-    <div class="container" id="train-form">
-      <div class="card mt-7">
-        <div class="card-heading text-center">
-          <h3 class="mt-3">Add Train</h3>
+    
+    <!--Form to add a new train-->
+    <div id="train-form">
+      <h3 class="mt-3 text-center">Add Train</h3>
+
+      <!-- Sign-up Form (note the various input "types") -->
+      <form role="form">
+        <div class="form-group">
+          <label for="name-input">Train Name:</label>
+          <input class="form-control" id="name-input" type="text" />
         </div>
-        <div class="card-body">
-          <!-- Sign-up Form (note the various input "types") -->
-          <form role="form">
-            <div class="form-group">
-              <label for="name-input">Train Name:</label>
-              <input class="form-control" id="name-input" type="text" />
-            </div>
-            <div class="form-group">
-              <label for="destination-input">Destination:</label>
-              <input class="form-control" id="destination-input" type="text" />
-            </div>
-            <div class="form-group">
-              <label for="first-train-input"
-                >First Train Time (HH:mm--military time):</label
-              >
-              <input class="form-control" id="first-train-input" type="text" />
-            </div>
-            <div class="form-group">
-              <label for="frequency-input">Frequency (min):</label>
-              <input class="form-control" id="frequency-input" type="text" />
-            </div>
-            <button class="btn btn-primary" id="add-train" type="submit">
-              Submit
-            </button>
-          </form>
+        <div class="form-group">
+          <label for="destination-input">Destination:</label>
+          <input class="form-control" id="destination-input" type="text" />
         </div>
-      </div>
+        <div class="form-group">
+          <label for="first-train-input"
+            >First Train Time (HH:mm--military time):</label
+          >
+          <input class="form-control" id="first-train-input" type="text" />
+        </div>
+        <div class="form-group">
+          <label for="frequency-input">Frequency (min):</label>
+          <input class="form-control" id="frequency-input" type="text" />
+        </div>
+        <button class="btn btn-primary" id="add-train" type="submit">
+          Submit
+        </button>
+      </form>
     </div>
 
     <!--PERSONAL JAVASCRIPT-->
